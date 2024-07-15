@@ -1,0 +1,14 @@
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\bin\Debug\net8.0\Lab03_Bank.exe
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\bin\Debug\net8.0\Lab03_Bank.deps.json
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\bin\Debug\net8.0\Lab03_Bank.runtimeconfig.json
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\bin\Debug\net8.0\Lab03_Bank.dll
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\bin\Debug\net8.0\Lab03_Bank.pdb
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\Lab03_Bank.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\Lab03_Bank.AssemblyInfoInputs.cache
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\Lab03_Bank.AssemblyInfo.cs
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\Lab03_Bank.csproj.CoreCompileInputs.cache
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\Lab03_Bank.dll
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\refint\Lab03_Bank.dll
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\Lab03_Bank.pdb
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\Lab03_Bank.genruntimeconfig.cache
+C:\Users\andre\OneDrive\Documents\UVU CLASSES\C#CLASS_NOTES\Lab03_Bank\Lab03_Bank\obj\Debug\net8.0\ref\Lab03_Bank.dll
