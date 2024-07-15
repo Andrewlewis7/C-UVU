@@ -3,7 +3,7 @@
 namespace UVUBank
 {
     /// <summary>
-    /// Main program to test the Account classes and AccountManager
+    /// Main program to test the Account classes and AccountManager stuff
     /// </summary>
     class Program
     {
