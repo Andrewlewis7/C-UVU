@@ -70,8 +70,9 @@
 - `accounts`: A dictionary that stores accounts with the account holder's name as the key.
 
 **Methods**:
-- `StoreAccount(IAccount account)`: Stores an account if it does not already exist.
-- `FindAccount(string name)`: Finds and returns an account by the account holder's name.
+- `StoreAccount(IAccount account): bool` - Stores an account if it does not already exist.
+- `FindAccountByNumber(string accountNumber): IAccount?` - Finds and returns an account by the account number.
+- `FindAccountByName(string name): IAccount?` - Finds and returns an account by the account holder's name.
 
 ### Program Class
 

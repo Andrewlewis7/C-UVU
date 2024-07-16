@@ -1,61 +1,111 @@
-﻿using System;
+﻿// Project Prolog
+// Name: Andrew Lewis
+// CS3260
+// Project: Lab_04
+// Date: 07/15/2024 
+// Purpose: Program for creating various different types of bank accounts. 
+//
+// I declare that the following code was written by me or provided
+// by the instructor for this project. I understand that copying source
+// code from any other source constitutes plagiarism, and that I will receive
+// a zero on this project if I am found in violation of this policy.
+// ---------------------------------------------------------------------------
+using System;
 
 namespace UVUBank
 {
-    /// <summary>
-    /// Main program to test the Account classes and AccountManager stuff
-    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            AccountManager accountManager = new AccountManager();
+            var accountManager = new AccountManager();
 
-            Console.WriteLine("Enter account details for Savings Account:");
-            Console.Write("Name: ");
-            string name = Console.ReadLine();
-            Console.Write("Address: ");
-            string address = Console.ReadLine();
-            Console.Write("Initial Balance: ");
-            decimal balance = decimal.Parse(Console.ReadLine());
-
-            IAccount savingsAccount = new SavingsAccount(name, address, balance);
-            accountManager.StoreAccount(savingsAccount);
-
-            Console.WriteLine("\nEnter account details for Checking Account:");
-            Console.Write("Name: ");
-            name = Console.ReadLine();
-            Console.Write("Address: ");
-            address = Console.ReadLine();
-            Console.Write("Initial Balance: ");
-            balance = decimal.Parse(Console.ReadLine());
-
-            IAccount checkingAccount = new CheckingAccount(name, address, balance);
-            accountManager.StoreAccount(checkingAccount);
-
-            Console.WriteLine("\nEnter account details for CD Account:");
-            Console.Write("Name: ");
-            name = Console.ReadLine();
-            Console.Write("Address: ");
-            address = Console.ReadLine();
-            Console.Write("Initial Balance: ");
-            balance = decimal.Parse(Console.ReadLine());
-
-            IAccount cdAccount = new CDAccount(name, address, balance);
-            accountManager.StoreAccount(cdAccount);
-
-            Console.WriteLine("\nEnter name to search for an account:");
-            string searchName = Console.ReadLine();
-            IAccount foundAccount = accountManager.FindAccount(searchName);
-            if (foundAccount != null)
+            while (true)
             {
-                Console.WriteLine($"Account found: {foundAccount.GetName()}, {foundAccount.GetAddress()}, {foundAccount.GetAccountNumber()}, Balance: {foundAccount.GetBalance()}, Type: {foundAccount.GetAccountType()}");
-            }
-            else
-            {
-                Console.WriteLine("Account not found.");
+                try
+                {
+                    Console.WriteLine("Enter account type (Savings, Checking, CD): ");
+                    var accountTypeInput = Console.ReadLine();
+                    if (!Enum.TryParse(accountTypeInput, true, out AccountType accountType))
+                    {
+                        Console.WriteLine("Invalid account type. Please enter Savings, Checking, or CD.");
+                        continue;
+                    }
+
+                    Console.WriteLine("Enter name: ");
+                    var name = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(name))
+                    {
+                        Console.WriteLine("Name cannot be empty.");
+                        continue;
+                    }
+
+                    Console.WriteLine("Enter address: ");
+                    var address = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(address))
+                    {
+                        Console.WriteLine("Address cannot be empty.");
+                        continue;
+                    }
+
+                    Console.WriteLine("Enter starting balance: ");
+                    if (!decimal.TryParse(Console.ReadLine(), out decimal balance))
+                    {
+                        Console.WriteLine("Invalid balance. Please enter a numeric value.");
+                        continue;
+                    }
+
+                    try
+                    {
+                        // Creates an account with the info provided. 
+                        Account account = accountType switch
+                        {
+                            AccountType.Savings => new SavingsAccount(name, address, balance),
+                            AccountType.Checking => new CheckingAccount(name, address, balance),
+                            AccountType.CD => new CDAccount(name, address, balance),
+                            _ => throw new ArgumentException("Invalid account type")
+                        };
+
+                        if (accountManager.StoreAccount(account))
+                        {
+                            Console.WriteLine($"Account for {name} created successfully with account number {account.GetAccountNumber()}.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Failed to create account. Account may already exist.");
+                        }
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine($"Error: {ex.Message}");
+                    }
+
+                    Console.WriteLine("Do you want to search for an account? (yes/no): ");
+                    var input = Console.ReadLine();
+                    if (input.ToLower() == "yes")
+                    {
+                        Console.WriteLine("Enter account number to search: ");
+                        var accountNumber = Console.ReadLine();
+                        var foundAccount = accountManager.FindAccountByNumber(accountNumber);
+                        if (foundAccount != null) 
+                        {
+                            Console.WriteLine($"Account found: {foundAccount.GetName()}, {foundAccount.GetAddress()}, {foundAccount.GetBalance()}, {foundAccount.GetAccountNumber()}, {foundAccount.GetAccountType()}, {foundAccount.GetServiceFee()}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Account not found.");
+                        }
+                    }
+
+                    Console.WriteLine("Do you want to continue? Must enter: (yes/no)");
+                    var continueInput = Console.ReadLine();
+                    if (continueInput.ToLower() != "yes") break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
             }
         }
     }
 }
-

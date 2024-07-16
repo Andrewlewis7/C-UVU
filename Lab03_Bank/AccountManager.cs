@@ -3,27 +3,35 @@ using System.Collections.Generic;
 
 namespace UVUBank
 {
-    /// <summary>
-    /// Class to manage accounts
-    /// </summary>
     public class AccountManager
     {
         private Dictionary<string, IAccount> accounts = new Dictionary<string, IAccount>();
 
         public bool StoreAccount(IAccount account)
         {
-            if (account == null || string.IsNullOrEmpty(account.GetName()))
-            {
-                return false;
-            }
-            accounts[account.GetName()] = account;
+            if (account == null) return false;
+            if (accounts.ContainsKey(account.GetAccountNumber())) return false;
+
+            accounts.Add(account.GetAccountNumber(), account);
             return true;
         }
 
-        public IAccount FindAccount(string name)
+        public IAccount FindAccountByNumber(string accountNumber)
         {
-            accounts.TryGetValue(name, out var account);
+            accounts.TryGetValue(accountNumber, out IAccount account);
             return account;
+        }
+
+        public IAccount FindAccountByName(string name)
+        {
+            foreach (var account in accounts.Values)
+            {
+                if (account.GetName().Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return account;
+                }
+            }
+            return null;
         }
     }
 }
